@@ -3,6 +3,7 @@
     <h1>Welcome {{ profile.name }}</h1>
     <img class="rounded" :src="profile.picture" alt="" />
     <p>{{ profile.email }}</p>
+    <!-- insert sorted blogs here -->
   </div>
 </template>
 

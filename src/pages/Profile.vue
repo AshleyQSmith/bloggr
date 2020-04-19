@@ -7,12 +7,17 @@
 </template>
 
 <script>
+
 export default {
   name: "Profile",
+  // props: [],
   computed: {
     profile() {
       return this.$store.state.profile;
     }
+  },
+  created(){
+    this.$store.dispatch("getProfile")
   }
 };
 </script>

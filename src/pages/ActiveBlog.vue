@@ -5,6 +5,9 @@
     <h3>{{activeBlog.title}}</h3>
     <h5>{{activeBlog.body}}</h5>
 
+<comment v-for="comment in comments" :key="comment.id" :commentData="comment" />
+<CreateComment v-if="this.$auth.isAuthenticated" :blogData="activeBlog"/>
+
 <!-- add code that hides delete/edit blog unless matching author info -->
 
     <!-- <div v-if=" this.activeBlog.creatorEmail == this.profile.email">
@@ -19,6 +22,8 @@
 
 <script>
 import blog from "../components/Blog.vue"
+import comment from "../components/Comment.vue"
+import CreateComment from "../components/CreateComment.vue"
 export default {
   name: 'ActiveBlog',
 
@@ -33,23 +38,25 @@ export default {
     activeBlog(){
       return this.$store.state.activeBlog.blog
     },
-  //   comments() {
-  //     return this.$store.state.activeBlog.comments
-  //   },
+    comments() {
+      return this.$store.state.activeBlog.comments
+    },
   //   profile(){
   //     return this.$store.state.profile
   //   },
   // },
-  methods:{
-    editBlog(){
+  // methods:{
+    // editBlog(){
 
-    },
-    deleteBlog(){
+    // },
+    // deleteBlog(){
 
-    },
-    }
+    // },
+    // }
   },
-  components:{}
+  components:{
+    CreateComment, comment
+  }
 }
 </script>
 

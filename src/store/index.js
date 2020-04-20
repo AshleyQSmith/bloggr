@@ -9,9 +9,8 @@ export default new Vuex.Store({
   state: {
     profile: {},
     blogs: {},
-    activeBlog: {
-      comments: {}
-    }
+    activeBlog: {},
+    comments: {}
   },
   mutations: {
     setProfile(state, profile) {
@@ -22,6 +21,9 @@ export default new Vuex.Store({
     },
     setActiveBlog(state, activeBlog) {
       state.activeBlog = activeBlog;
+    },
+    setComments(state, comments){
+      state.comments = comments
     }
   },
   actions: {
@@ -64,5 +66,13 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async createComment({commit, dispatch}, newComment) {
+      try {
+        let res = await api.post('comments', newComment)
+        dispatch('getBlogs', newComment.blogId)
+      } catch (error) {
+        console.error(error)
+      }
+    }
   },
 });

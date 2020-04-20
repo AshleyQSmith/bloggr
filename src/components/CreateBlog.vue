@@ -1,5 +1,5 @@
 <template>
-  <div class="CreateBlog border ">
+  <div class="CreateBlog border col-6 mx-auto ">
     <form @submit.prevent="createBlog()">
       <div class="form-group">
         <input type="text" name="title" id="" class="form-control" placeholder="Add Title" v-model="newBlog.title" required>

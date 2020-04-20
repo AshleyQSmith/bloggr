@@ -1,5 +1,6 @@
 <template>
   <div class="comment">
+  <h5>{{commentData.body}}</h5>
 
 
   </div>
@@ -7,12 +8,20 @@
 
 
 <script>
+
 export default {
   name: 'comment',
   data(){
     return {}
   },
-  computed:{},
+  props: ["commentData"],
+
+  // computed:{
+  //   comments(){
+  //     return this.$store.state.activeBlog.comments
+      
+  //   }
+  // },
   methods:{},
   components:{}
 }

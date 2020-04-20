@@ -51,7 +51,15 @@ export default new Vuex.Store({
       try {
         let res = await api.get("blogs/" + blogId);
         console.log(res.data)
-        this.commit("setActiveBlog", res.data);
+        commit("setActiveBlog", res.data);
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async createBlog({ commit, dispatch }, newBlog) {
+      try {
+        let res = await api.post('blogs', newBlog)
+        dispatch('getBlogs')
       } catch (error) {
         console.error(error)
       }

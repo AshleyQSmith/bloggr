@@ -1,12 +1,15 @@
 <template>
   <div class="blog card text-center">
+        <img class="img-fluid" :src="blogData.imgUrl" alt srcset />
     <h3>{{blogData.title}}</h3>
     <h5>{{blogData.body}}</h5>
     <button class="btn-sm btn-outline-success" @click="selectBlog()">Show More</button>
 
 <!-- add code that hides delete/edit blog unless matching author info -->
-    <!-- <div v-if="this.$auth.isAuthenticated">
-      <button class="btn-sm btn-outline-warning" v-if="blog.creator.name == profile.name">Edit</button>
+
+    <!-- <div v-if=" this.blogData.creatorEmail == this.profile.email">
+      <button class="btn-sm btn-outline-warning" @click="editBlog()">Edit</button>
+      <button class="btn-sm btn-outline-danger" @click="deleteBlog()">Delete</button>
     </div> -->
   </div>
 </template>
@@ -32,7 +35,13 @@ export default {
         name: "ActiveBlog",
         params: {blogId: this.blogData._id}
       })
-    }
+    },
+    editBlog() {
+
+    },
+    deleteBlog() {
+      
+    },
   },
   components:{}
 };

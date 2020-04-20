@@ -1,13 +1,16 @@
 <template>
   <div class="ActiveBlog">
-<div>this is the active blog template</div>
 <div class="blog card text-center">
+    <img class="img-fluid" :src="activeBlog.imgUrl" alt srcset />
     <h3>{{activeBlog.title}}</h3>
     <h5>{{activeBlog.body}}</h5>
 
 <!-- add code that hides delete/edit blog unless matching author info -->
 
-    <!-- <button class="btn-sm btn-outline-danger" @click="deleteBlog()">Delete</button> -->
+    <!-- <div v-if=" this.activeBlog.creatorEmail == this.profile.email">
+      <button class="btn-sm btn-outline-warning" @click="editBlog()">Edit</button>
+      <button class="btn-sm btn-outline-danger" @click="deleteBlog()">Delete</button>
+    </div> -->
 
   </div>
   </div>
@@ -23,7 +26,8 @@ export default {
     return {}
   },
   created(){
-    this.$store.dispatch("getBlogById", this.$route.params.blogId)
+    this.$store.dispatch("getBlogById", this.$route.params.blogId);
+    // this.$store.dispatch("getProfile")
   },
   computed:{
     activeBlog(){
@@ -36,10 +40,14 @@ export default {
   //     return this.$store.state.profile
   //   },
   // },
-  // methods:{
-  //   setActiveUser(author){
+  methods:{
+    editBlog(){
 
-  //   }
+    },
+    deleteBlog(){
+
+    },
+    }
   },
   components:{}
 }

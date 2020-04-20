@@ -8,10 +8,10 @@
 <!-- v-for here -->
         <blog v-for="blog in blogs" :blogData="blog" :key="blog._id"></blog>
         </div>
-
-        
-    </div>
+      </div>
   </div>
+
+
   </div>
 </template>
 
@@ -32,6 +32,11 @@ export default {
     },
     profile() {
       return this.$store.state.profile;
+    }
+  },
+  methods: {
+    createBlog(){
+
     }
   },
   components:{blog}

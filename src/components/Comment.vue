@@ -24,7 +24,7 @@ export default {
   methods:{
     deleteComment(){
       this.$router.push({name: "ActiveBlog"})
-      this.$store.dispatch('deleteComment', this.commentData.id)
+      this.$store.dispatch('deleteComment', this.commentData)
     }
   },
   components:{}

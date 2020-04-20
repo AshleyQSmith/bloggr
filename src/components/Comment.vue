@@ -1,6 +1,6 @@
 <template>
-  <div class="comment">
-  <h5>{{commentData.body}}</h5>
+  <div class="comment text-left m-1 pt-1 border-top">
+  <h6>{{commentData.creator.name}}: {{commentData.body}}</h6>
 
 
   </div>

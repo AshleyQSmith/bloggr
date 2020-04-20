@@ -20,9 +20,15 @@ export default {
       newComment: {}
     }
   },
-  computed:{},
+  computed:{
+    activeBlog(){
+      return this.$store.state.activeBlog.blog
+    }
+  },
   methods:{
     createComment() {
+      this.newComment.blogId = this.activeBlog.id
+      this.newComment.creatorEmail = this.$auth.userInfo.email
       this.$store.dispatch('createComment', this.newComment)
       this.newComment = {}
     }

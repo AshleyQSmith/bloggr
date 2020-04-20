@@ -2,7 +2,7 @@
   <div class="blog card text-center">
         <img class="img-fluid" :src="blogData.imgUrl" alt srcset />
     <h3>{{blogData.title}}</h3>
-    <h5>{{blogData.body}}</h5>
+    <h5>{{blogData.creator.name}}</h5>
     <button class="btn-sm btn-outline-success" @click="selectBlog()">Show More</button>
 
 <!-- add code that hides delete/edit blog unless matching author info -->

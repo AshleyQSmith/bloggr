@@ -6,21 +6,17 @@
     <h4>By: {{activeBlog.creator.name}}</h4>
     <h5>{{activeBlog.body}}</h5>
 
-<!-- <div v-if=" this.activeBlog.creator.email == this.profile.email" >
-<button class="btn-sm btn-danger" @click="deleteBlog()" >Delete</button>
-</div> -->
+<div v-if="this.activeBlog.creator.email == this.$auth.userInfo.email">
+<button class="btn-sm btn-danger" @click="deleteBlog()" >Delete My Blog</button>
+<button class="btn-sm btn-warning" @click="editBlog()" >Edit My Blog</button>
+</div>
+
 
 <CreateComment v-if="this.$auth.isAuthenticated" :blogData="activeBlog"/>
 
 <comment v-for="comment in comments" :key="comment.id" :commentData="comment" />
 
 
-<!-- add code that hides delete/edit blog unless matching author info -->
-
-    <!-- <div v-if=" this.activeBlog.creatorEmail == this.profile.email">
-      <button class="btn-sm btn-outline-warning" @click="editBlog()">Edit</button>
-      <button class="btn-sm btn-outline-danger" @click="deleteBlog()">Delete</button>
-    </div> -->
 
   </div>
   </div>
@@ -40,7 +36,7 @@ export default {
   },
   created(){
     this.$store.dispatch("getBlogById", this.$route.params.blogId);
-    // this.$store.dispatch("getProfile")
+    this.$store.dispatch("getProfile")
   },
   computed:{
     activeBlog(){
@@ -49,19 +45,20 @@ export default {
     comments() {
       return this.$store.state.activeBlog.comments
     },
-  //   profile(){
-  //     return this.$store.state.profile
-  //   },
-  // },
-  // methods:{
+    profile(){
+      return this.$store.state.profile
+    },
+  },
+  methods:{
     // editBlog(){
 
     // },
-    // deleteBlog(){
+    deleteBlog(){
+      this.$router.push({name: "Profile"})
+      this.$store.dispatch("deleteBlog", this.$route.params.blogId)
+    },
+    },
 
-    // },
-    // }
-  },
   components:{
     CreateComment, comment
   }

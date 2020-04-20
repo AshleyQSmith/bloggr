@@ -73,6 +73,14 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
+    },
+    async deleteBlog({commit, dispatch}, blogId) {
+      try {
+        await api.delete('blogs/' + blogId)
+        dispatch('getBlogs')
+      } catch (error) {
+        console.error(error)
+      }
     }
   },
 });

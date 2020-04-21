@@ -66,7 +66,7 @@ export default {
     },
     deleteBlog(){
       this.$router.push({name: "Home"})
-      this.$store.dispatch("deleteBlog", this.$route.params.blogId)
+      this.$store.dispatch("deleteBlog", this.activeBlog.id)
     },
     },
 

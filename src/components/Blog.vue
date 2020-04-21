@@ -5,12 +5,6 @@
     <h5>{{blogData.creator.name}}</h5>
     <button class="btn-sm btn-outline-success mb-2" @click="selectBlog()">Show More</button>
 
-<!-- add code that hides delete/edit blog unless matching author info -->
-
-    <!-- <div v-if=" this.blogData.creatorEmail == this.profile.email">
-      <button class="btn-sm btn-outline-warning" @click="editBlog()">Edit</button>
-      <button class="btn-sm btn-outline-danger" @click="deleteBlog()">Delete</button>
-    </div> -->
   </div>
 </template>
 
@@ -36,12 +30,7 @@ export default {
         params: {blogId: this.blogData._id}
       })
     },
-    editBlog() {
-
-    },
-    deleteBlog() {
-      
-    },
+    
   },
   components:{}
 };

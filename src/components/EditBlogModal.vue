@@ -9,16 +9,14 @@
           </button>
         </div>
         <div class="modal-body">
-
-<div class="mx-auto">
+    <div class="mx-auto">
     <div class="form-group">
       <label for>Title</label>
       <input
         type="text"
         class="form-control"
         placeholder="Overwrite Title..."
-        v-model="blog.title"
-      />
+        v-model="blog.title"/>
     </div>
     <div class="form-group">
       <label for>Body</label>
@@ -31,8 +29,7 @@
     </div>
     <button
       class="btn btn-outline-success"
-      data-dismiss="modal"
-      @click="editBlog()"
+      data-dismiss="modal" @click="editBlog()"
     >Submit Edits</button>
   </div>
 

@@ -25,7 +25,10 @@ export default new Vuex.Store({
     },
     setComments(state, comments){
       state.comments = comments
-    }
+    },
+    setActiveComment(state, comment) {
+      state.activeComment = comment
+    },
   },
   actions: {
     setBearer({}, bearer) {
@@ -113,9 +116,8 @@ export default new Vuex.Store({
 
   async editComment({commit, dispatch}, commentData){
     try {
-      let res = await api.get('comments/' + commentData.id, commentData)
+      await api.put('comments/' + commentData.id, commentData)
       dispatch('getBlogById', commentData.blogId)
-
     } catch (error) {
       console.error(error)
     }

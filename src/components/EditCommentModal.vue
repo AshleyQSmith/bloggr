@@ -9,19 +9,17 @@
           </button>
         </div>
         <div class="modal-body">
-<div class="mx-auto">
+    <div class="mx-auto">
     <div class="form-group">
       <input
         type="text"
         class="form-control"
         placeholder="Overwrite Comment..."
-        v-model="comment.body"
-      />
+        v-model="comment.body"/>
     </div>
     <button
       class="btn btn-outline-success"
-      data-dismiss="modal"
-      @click="editComment()"
+      data-dismiss="modal" @click="editComment()"
     >Submit Edits</button>
   </div>
 

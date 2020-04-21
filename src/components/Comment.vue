@@ -7,7 +7,7 @@
 
 <button 
 class="btn-sm btn-warning"
-@click="triggerEdit()"
+@click="triggerEditComment(commentData)"
 data-toggle="modal" 
 data-target="#editCommentModal"
 >Edit</button>
@@ -34,8 +34,8 @@ export default {
       this.$router.push({name: "ActiveBlog"})
       this.$store.dispatch('deleteComment', this.commentData)
     },
-    triggerEdit(){
-      this.$store.dispatch("getBlogForEdit", this.activeBlog._id)
+     triggerEditComment(commentData) {
+      this.$store.commit("setActiveComment", commentData);
     },
   },
   components:{editCommentModal}

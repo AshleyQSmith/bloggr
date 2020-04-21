@@ -114,7 +114,7 @@ export default new Vuex.Store({
     }
   },
 
-  async editComment({commit, dispatch}, commentData){
+  async editComment({commit, dispatch}, commentData) {
     try {
       await api.put('comments/' + commentData.id, commentData)
       dispatch('getBlogById', commentData.blogId)

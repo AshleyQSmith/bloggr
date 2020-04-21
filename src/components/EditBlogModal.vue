@@ -48,15 +48,13 @@ export default {
   },
   computed: {
     blog() {
-      return this.$store.state.activeBlog;
-    },
+      return this.$store.state.activeBlog}
+  },
   methods: {
     editBlog() {
-      this.$store.dispatch("editBlog", this.blog)
-    }
+      this.$store.dispatch("editBlog", this.blog)}
   },
-  components:{}
-  }
+  components:{},
 }
 </script>
 

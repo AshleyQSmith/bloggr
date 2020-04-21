@@ -4,7 +4,15 @@
 
 <div v-if="this.commentData.creator.email == this.$auth.userInfo.email">
 <button class="btn-sm btn-danger" @click="deleteComment()" >Delete</button>
-<button class="btn-sm btn-warning" @click="editComment()" >Edit</button>
+
+<button 
+class="btn-sm btn-warning"
+@click="triggerEdit()"
+data-toggle="modal" 
+data-target="#editCommentModal"
+>Edit</button>
+
+<editCommentModal id="editCommentModal"></editCommentModal>
 </div>
 
   </div>
@@ -12,7 +20,7 @@
 
 
 <script>
-
+import editCommentModal from "../components/EditCommentModal.vue"
 export default {
   name: 'comment',
   data(){
@@ -25,9 +33,12 @@ export default {
     deleteComment(){
       this.$router.push({name: "ActiveBlog"})
       this.$store.dispatch('deleteComment', this.commentData)
-    }
+    },
+    triggerEdit(){
+      this.$store.dispatch("getBlogForEdit", this.activeBlog._id)
+    },
   },
-  components:{}
+  components:{editCommentModal}
 }
 </script>
 

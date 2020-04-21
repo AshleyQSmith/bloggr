@@ -10,7 +10,8 @@ export default new Vuex.Store({
     profile: {},
     blogs: {},
     activeBlog: {},
-    comments: {}
+    comments: {},
+    activeComment: {}
   },
   mutations: {
     setProfile(state, profile) {
@@ -89,6 +90,35 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
+    },
+
+    async editBlog({commit, dispatch}, blogData) {
+    try {
+      await api.put('blogs/' + blogData.id, blogData)
+      dispatch('getBlogById', blogData.id)
+    } catch (error) {
+      console.error(error)
     }
   },
+
+  async getBlogForEdit({ commit, }, blogId) {
+    try {
+      let res = await api.get('blogs/' + blogId)
+      commit('setActiveBlog', res.data.blog)
+      console.log(this.state.activeBlog)
+    } catch (error) {
+      console.error(error)
+    }
+  },
+
+  async editComment({commit, dispatch}, commentData){
+    try {
+      let res = await api.get('comments/' + commentData.id, commentData)
+      dispatch('getBlogById', commentData.blogId)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+},
 });

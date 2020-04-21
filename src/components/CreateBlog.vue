@@ -30,6 +30,7 @@ export default {
   computed:{},
   methods:{
     createBlog() {
+      this.$router.push({name: "Home"})
       this.$store.dispatch('createBlog', this.newBlog)
       this.newBlog = {}
     }

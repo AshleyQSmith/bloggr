@@ -7,14 +7,25 @@
     <h5>{{activeBlog.body}}</h5>
 
 <div v-if="this.activeBlog.creator.email == this.$auth.userInfo.email">
+
 <button class="btn-sm btn-danger" @click="deleteBlog()" >Delete My Blog</button>
-<button class="btn-sm btn-warning" @click="editBlog()" >Edit My Blog</button>
+
+<button 
+class="btn-sm btn-warning"
+@click="triggerEdit()"
+data-toggle="modal" 
+data-target="#editBlogModal"
+>Edit My Blog</button>
+
+<editBlogModal id="editBlogModal"></editBlogModal>
+
 </div>
 
 
 <CreateComment v-if="this.$auth.isAuthenticated" :blogData="activeBlog"/>
 
 <comment v-for="comment in comments" :key="comment.id" :commentData="comment" />
+
 
 
 
@@ -28,9 +39,9 @@ import blog from "../components/Blog.vue"
 import comment from "../components/Comment.vue"
 import CreateComment from "../components/CreateComment.vue"
 import profile from "../pages/Profile.vue"
+import editBlogModal from "../components/EditBlogModal.vue"
 export default {
   name: 'ActiveBlog',
-
   data(){
     return {}
   },
@@ -50,17 +61,17 @@ export default {
     },
   },
   methods:{
-    // editBlog(){
-
-    // },
+   triggerEdit(){
+      this.$store.dispatch("getBlogForEdit", this.activeBlog.id)
+    },
     deleteBlog(){
-      this.$router.push({name: "Profile"})
+      this.$router.push({name: "Home"})
       this.$store.dispatch("deleteBlog", this.$route.params.blogId)
     },
     },
 
   components:{
-    CreateComment, comment
+    CreateComment, comment, editBlogModal
   }
 }
 </script>
